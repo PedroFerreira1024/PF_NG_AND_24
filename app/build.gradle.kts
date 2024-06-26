@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+def apiKeyPropertiesFile = rootProject.file("apiKey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     namespace = "com.ng.challenge.moviesapp"
     compileSdk = 34
@@ -13,6 +17,10 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
+        buildConfigField "String", "BASE_URL", apiKeyProperties['BASE_URL']
+        buildConfigField "String", "BASE_URL_IMAGE", apiKeyProperties['BASE_URL_IMAGE']
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
