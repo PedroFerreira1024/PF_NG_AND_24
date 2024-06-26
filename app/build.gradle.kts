@@ -1,15 +1,20 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlinAndroidKsp)
+    alias(libs.plugins.hiltAndroid)
 }
-
-def apiKeyPropertiesFile = rootProject.file("apiKey.properties")
-def apiKeyProperties = new Properties()
-apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
 
 android {
     namespace = "com.ng.challenge.moviesapp"
     compileSdk = 34
+
+val apiKeyPropertiesFile = rootProject.file("apiKey.properties")
+val apiKeyProperties = Properties()
+apiKeyProperties.load(FileInputStream(apiKeyPropertiesFile))
 
     defaultConfig {
         applicationId = "com.ng.challenge.moviesapp"
@@ -18,9 +23,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
-        buildConfigField "String", "BASE_URL", apiKeyProperties['BASE_URL']
-        buildConfigField "String", "BASE_URL_IMAGE", apiKeyProperties['BASE_URL_IMAGE']
+        buildConfigField ("String", "API_KEY", apiKeyProperties["API_KEY"].toString())
+        buildConfigField ("String", "BASE_URL", apiKeyProperties["BASE_URL"].toString())
+        buildConfigField ("String", "BASE_URL_IMAGE", apiKeyProperties["BASE_URL_IMAGE"].toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -119,5 +124,5 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.compiler)
-    implementation(libs.androidx.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
 }
