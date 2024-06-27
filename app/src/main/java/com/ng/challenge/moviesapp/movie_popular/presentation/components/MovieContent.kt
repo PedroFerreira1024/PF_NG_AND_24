@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,10 +21,10 @@ fun MovieContent(
     modifier : Modifier = Modifier,
     pagingMovies: LazyPagingItems<Movie>,
     paddingValues: PaddingValues,
-    onClick: (movieId: Int) -> Int
+    onClick: (movieId: Int) -> Unit
 ){
     Box(
-        modifier = modifier.background(Color.Black)
+        modifier = modifier.background(MaterialTheme.colors.background)
     ) {
        LazyVerticalGrid(
            columns = GridCells.Fixed(2),

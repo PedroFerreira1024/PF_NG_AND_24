@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ng.challenge.moviesapp.movie_popular.presentation.toRoundedDecimals
 
 @Composable
 fun MovieRate (
@@ -30,13 +31,13 @@ fun MovieRate (
             imageVector = Icons.Default.Star,
             contentDescription = null,
             tint = Color.Yellow,
-            modifier = Modifier.size(12.dp)
+            modifier = Modifier.size(14.dp)
         )
         Text(
-            text = rate.toString(),
+            text = rate.toRoundedDecimals(),
             style = MaterialTheme.typography.body1,
             color = Color.White,
-            fontSize = 10.sp
+            fontSize = 12.sp
         )
     }
 }

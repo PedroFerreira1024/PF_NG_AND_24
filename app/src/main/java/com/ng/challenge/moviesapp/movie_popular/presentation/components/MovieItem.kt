@@ -45,7 +45,7 @@ fun MovieItem (
         Card(
             modifier = Modifier
                 .fillMaxSize()
-                .height(200.dp)
+                .height(260.dp)
                 .padding(4.dp)
                 .clickable {
                     onClick(id)
@@ -59,9 +59,10 @@ fun MovieItem (
                         .data(imageUrl)
                         .crossfade(true)
                         .error(R.drawable.image_error)
-                        .placeholder(R.drawable.image_placeholder),
+                        .placeholder(R.drawable.image_placeholder)
+                        .build(),
                     contentDescription = "",
-                    contentScale = ContentScale.FillHeight,
+                    contentScale = ContentScale.FillWidth,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
