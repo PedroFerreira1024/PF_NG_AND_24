@@ -43,7 +43,7 @@ fun MovieItem (
                 .background(Color.Black)
         )
         Card(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .height(260.dp)
                 .padding(4.dp)
