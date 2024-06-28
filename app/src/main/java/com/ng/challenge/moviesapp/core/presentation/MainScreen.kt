@@ -1,7 +1,10 @@
 package com.ng.challenge.moviesapp.core.presentation
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.Scaffold
@@ -21,8 +24,10 @@ fun MainScreen(modifier: Modifier = Modifier,
         bottomBar = {
             BottomNavigationBar(navController = navController)
         },
-        content = {
-            NavigationGraph(navController = navController)
+        content = { paddingValues ->
+            Box(modifier = Modifier.padding(paddingValues)) {
+                NavigationGraph(navController = navController)
+            }
         }
     )
 }
