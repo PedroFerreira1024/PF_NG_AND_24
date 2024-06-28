@@ -5,7 +5,12 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.ng.challenge.moviesapp.core.util.Constants
+import com.ng.challenge.moviesapp.detail_movie.presentation.MovieDetailScreen
+import com.ng.challenge.moviesapp.detail_movie.presentation.MovieDetailViewModel
 import com.ng.challenge.moviesapp.movie_popular.presentation.MoviePopularScreen
 import com.ng.challenge.moviesapp.movie_popular.presentation.MoviePopularViewModel
 import com.ng.challenge.moviesapp.movie_popular.presentation.state.MoviePopularState
@@ -28,7 +33,7 @@ fun NavigationGraph(modifier: Modifier = Modifier,
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-
+                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
                 })
         }
         composable(BottomNavItem.MovieSearch.route) {
@@ -42,8 +47,26 @@ fun NavigationGraph(modifier: Modifier = Modifier,
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
-
+                    navController.navigate(BottomNavItem.MovieDetail.passMovieId(movieId = it))
                 })
+        }
+        composable(
+            route = BottomNavItem.MovieDetail.route,
+            arguments = listOf(
+                navArgument(Constants.MOVIE_DETAIL_ARGUMENT) {
+                    type= NavType.IntType
+                    defaultValue = 0
+                }
+            )
+        ) {
+            val viewModel: MovieDetailViewModel = hiltViewModel()
+            val uiState = viewModel.uiState
+            val getMovieDetail = viewModel::getMovieDetail
+            MovieDetailScreen(
+                id = it.arguments?.getInt(Constants.MOVIE_DETAIL_ARGUMENT),
+                uiState = uiState,
+                getMovieDetail = getMovieDetail
+            )
         }
     }
 }
