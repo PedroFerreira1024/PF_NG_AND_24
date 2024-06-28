@@ -8,8 +8,7 @@ import com.ng.challenge.moviesapp.movie_popular.data.mapper.toMovie
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 import java.io.IOException
 
-const val LIMIT = 20
-class MoviePagingSource constructor(
+class MoviePagingSource (
     private val remoteDataSource: IMoviePopularDataSource
 ): PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
@@ -38,5 +37,9 @@ class MoviePagingSource constructor(
             exception.printStackTrace()
             return LoadResult.Error(exception)
         }
+    }
+
+    companion object {
+        private const val LIMIT = 20
     }
 }
