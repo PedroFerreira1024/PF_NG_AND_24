@@ -28,6 +28,7 @@ apiKeyProperties.load(FileInputStream(apiKeyPropertiesFile))
         buildConfigField ("String", "BASE_URL_IMAGE", apiKeyProperties["BASE_URL_IMAGE"].toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -73,28 +74,27 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material)
-
+    // Tests
+    implementation(libs.androidx.runner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.mockito.kotlin)
 
-    implementation (libs.truth)
+    implementation(libs.truth)
 
-    androidTestImplementation (libs.hilt.android.testing)
-    kaptAndroidTest (libs.hilt.android.compiler)
-
-    androidTestImplementation (libs.androidx.core.testing)
-    androidTestImplementation (libs.kotlinx.coroutines.test)
-    androidTestImplementation (libs.truth)
+    androidTestImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.truth)
 
     // Mockito main dependency
-    testImplementation (libs.mockito.core)
+    testImplementation(libs.mockito.core)
     // Mockito for Android tests
-    androidTestImplementation (libs.mockito.android)
+    androidTestImplementation(libs.mockito.android)
     // Mockito for mocking classes and methods
-    testImplementation (libs.mockito.inline)
+    testImplementation(libs.mockito.inline)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
@@ -102,16 +102,16 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
 
-    //Timber
+    // Timber
     implementation(libs.timber)
 
-    //DataStore
+    // DataStore
     implementation(libs.androidx.datastore.preferences)
 
     // Splashscreen
     implementation(libs.androidx.core.splashscreen)
 
-    //Gson
+    // Gson
     implementation(libs.gson)
 
     // Others - Compose dependencies
@@ -139,7 +139,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    //DI - Hilt
+    // DI - Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
