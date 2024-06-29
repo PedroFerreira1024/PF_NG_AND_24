@@ -9,6 +9,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
@@ -42,7 +44,10 @@ fun BottomNavigationBar(
                     )
                 },
                 label = {
-                    Text(text = destination.title)
+                    Text(
+                        text = destination.title,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold)
                 })
         }
     }
