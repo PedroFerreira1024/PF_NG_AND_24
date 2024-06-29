@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieSearchViewModel @Inject constructor (
-    private val getMovieSearchUseCase: GetMovieSearchUseCase
+    private val getMovieSearchUseCase: IGetMovieSearchUseCase
 ): ViewModel() {
 
     var uiState by mutableStateOf(MovieSearchState())
