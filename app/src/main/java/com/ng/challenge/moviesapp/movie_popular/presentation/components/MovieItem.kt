@@ -62,7 +62,7 @@ fun MovieItem (
                         .placeholder(R.drawable.image_placeholder)
                         .build(),
                     contentDescription = "",
-                    contentScale = ContentScale.FillWidth,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
