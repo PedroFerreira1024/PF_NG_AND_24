@@ -13,6 +13,8 @@ import com.ng.challenge.moviesapp.detail_movie.presentation.state.MovieDetailSta
 @Composable
 fun MovieDetailScreen(
     uiState: MovieDetailState,
+    backPressNavigation: () -> Unit,
+    navigateToDetailMovie: (Int) -> Unit
 ) {
 
     val pagingMoviesSimilar = uiState.results.collectAsLazyPagingItems()
@@ -20,7 +22,9 @@ fun MovieDetailScreen(
     Scaffold(
         topBar = {
             MovieAppBar(
-                title = R.string.movie_detail
+                title = R.string.movie_detail,
+                backEnabled = true,
+                backPress = backPressNavigation
             )
         },
         content = {
@@ -28,7 +32,8 @@ fun MovieDetailScreen(
                 movieDetails = uiState.movieDetails,
                 pagingMoviesSimilar = pagingMoviesSimilar,
                 isLoading = uiState.isLoading,
-                isError = uiState.error
+                isError = uiState.error,
+                navigateToDetailMovie = navigateToDetailMovie
             )
         }
     )

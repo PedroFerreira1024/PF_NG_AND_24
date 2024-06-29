@@ -62,6 +62,12 @@ fun NavigationGraph(modifier: Modifier = Modifier,
             val uiState = viewModel.uiState
             MovieDetailScreen(
                 uiState = uiState,
+                backPressNavigation = {
+                    navController.popBackStack()
+                },
+                navigateToDetailMovie = {
+                    navController.navigate(DetailScreenNav.DetailScreen.passMovieId(movieId = it))
+                }
             )
         }
     }

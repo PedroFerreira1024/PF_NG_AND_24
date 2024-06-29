@@ -18,6 +18,7 @@ import com.ng.challenge.moviesapp.movie_popular.presentation.components.MovieIte
 @Composable
 fun MovieDetailSimilarMovies (
     pagingMoviesSimilar : LazyPagingItems<Movie>,
+    navigateToDetailMovie: (Int) -> Unit,
     modifier: Modifier
 ) {
     LazyRow(
@@ -35,7 +36,7 @@ fun MovieDetailSimilarMovies (
                     showExtraData = false,
                     movie = movie,
                     onClick = {
-
+                        navigateToDetailMovie(movie.id)
                     })
             }
         }

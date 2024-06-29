@@ -40,7 +40,8 @@ fun MovieDetailContent(
     movieDetails: MovieDetails?,
     pagingMoviesSimilar: LazyPagingItems<Movie>,
     isLoading: Boolean,
-    isError: String
+    isError: String,
+    navigateToDetailMovie: (Int) -> Unit
 ) {
     Box(
         modifier = modifier
@@ -115,7 +116,8 @@ fun MovieDetailContent(
             MovieDetailSimilarMovies(
                 pagingMoviesSimilar = pagingMoviesSimilar,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                navigateToDetailMovie = navigateToDetailMovie
             )
         }
         if (isError.isNotEmpty()) {
@@ -155,5 +157,5 @@ fun MovieDetailsContentPreview() {
         pagingMoviesSimilar = flowOf<PagingData<Movie>>(PagingData.from(emptyList())).collectAsLazyPagingItems(),
         isError = "Error",
         isLoading = false,
-    )
+    ){}
 }
