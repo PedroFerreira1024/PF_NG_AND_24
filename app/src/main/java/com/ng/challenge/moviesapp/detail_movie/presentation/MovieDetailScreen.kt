@@ -16,18 +16,10 @@ import com.ng.challenge.moviesapp.detail_movie.presentation.state.MovieDetailSta
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MovieDetailScreen(
-    id: Int?,
     uiState: MovieDetailState,
-    getMovieDetail: (MovieDetailEvent.GetMovieDetail) -> Unit
 ) {
 
     val pagingMoviesSimilar = uiState.results.collectAsLazyPagingItems()
-
-    LaunchedEffect(key1 = true) {
-        if (id != null) {
-            getMovieDetail(MovieDetailEvent.GetMovieDetail(id))
-        }
-    }
 
     Scaffold(
         topBar = {

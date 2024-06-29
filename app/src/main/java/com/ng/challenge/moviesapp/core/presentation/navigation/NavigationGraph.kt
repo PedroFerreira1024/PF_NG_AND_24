@@ -61,11 +61,8 @@ fun NavigationGraph(modifier: Modifier = Modifier,
         ) {
             val viewModel: MovieDetailViewModel = hiltViewModel()
             val uiState = viewModel.uiState
-            val getMovieDetail = viewModel::getMovieDetail
             MovieDetailScreen(
-                id = it.arguments?.getInt(Constants.MOVIE_DETAIL_ARGUMENT),
                 uiState = uiState,
-                getMovieDetail = getMovieDetail
             )
         }
     }

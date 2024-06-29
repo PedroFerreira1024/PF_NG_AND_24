@@ -3,8 +3,10 @@ package com.ng.challenge.moviesapp.detail_movie.presentation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ng.challenge.moviesapp.core.util.Constants
 import com.ng.challenge.moviesapp.core.util.ResultData
 import com.ng.challenge.moviesapp.core.util.UtilFunctions
 import com.ng.challenge.moviesapp.detail_movie.domain.usecase.GetMovieDetailsUseCase
@@ -17,13 +19,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val getMovieDetailsUseCase: IGetMovieDetailsUseCase
+    private val getMovieDetailsUseCase: IGetMovieDetailsUseCase,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     var uiState by mutableStateOf(MovieDetailState())
         private set
 
-    fun getMovieDetail(getMovieDetail: MovieDetailEvent.GetMovieDetail) {
+    private val movieId = savedStateHandle.get<Int>(key = Constants.MOVIE_DETAIL_ARGUMENT)
+
+    init{
+        movieId?.let {safeMovieId ->
+            getMovieDetail(MovieDetailEvent.GetMovieDetail(safeMovieId))
+        }
+    }
+
+    private fun getMovieDetail(getMovieDetail: MovieDetailEvent.GetMovieDetail) {
         event(getMovieDetail)
     }
 
@@ -44,12 +55,14 @@ class MovieDetailViewModel @Inject constructor(
                                     results = resultData.data?.first ?: emptyFlow()
                                 )
                             }
+
                             is ResultData.Failure -> {
                                 UtilFunctions.logError(
                                     "Movie Detail ERROR",
                                     resultData.e.message.toString()
                                 )
                             }
+
                             is ResultData.Loading -> {
                                 uiState = uiState.copy(
                                     isLoading = true
