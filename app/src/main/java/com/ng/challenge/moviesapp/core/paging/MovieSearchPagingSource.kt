@@ -3,7 +3,7 @@ package com.ng.challenge.moviesapp.core.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import coil.network.HttpException
-import com.ng.challenge.moviesapp.core.domain.model.MovieSearch
+import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.search_movie.data.mapper.toMovieSearch
 import com.ng.challenge.moviesapp.search_movie.domain.source.IMovieSearchDataSource
 import java.io.IOException
@@ -11,15 +11,15 @@ import java.io.IOException
 class MovieSearchPagingSource(
     private val query: String,
     private val remoteDataSource: IMovieSearchDataSource
-): PagingSource<Int, MovieSearch>() {
-    override fun getRefreshKey(state: PagingState<Int, MovieSearch>): Int? {
+): PagingSource<Int, Movie>() {
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let {anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(LIMIT) ?: anchorPage?.nextKey?.minus(LIMIT)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieSearch> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val pageNumber = params.key ?: 1
             val response = remoteDataSource.getSearchMovies(page = pageNumber, query = query)

@@ -12,7 +12,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -41,9 +40,7 @@ fun MovieContent(
                val movie = pagingMovies[index]
                movie?.let {
                    MovieItem(
-                       voteAvg = it.voteAvg,
-                       imageUrl = it.imageUrl,
-                       id = it.id,
+                       movie = movie,
                        onClick = {movieId ->
                            onClick(movieId)
                        }

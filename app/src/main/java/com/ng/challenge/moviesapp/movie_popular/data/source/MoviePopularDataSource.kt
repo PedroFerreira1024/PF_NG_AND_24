@@ -6,7 +6,7 @@ import com.ng.challenge.moviesapp.core.paging.MoviePagingSource
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 
 
-class MoviePopularDataSource constructor(
+class MoviePopularDataSource (
     private val service: MovieService
 ) : IMoviePopularDataSource {
 

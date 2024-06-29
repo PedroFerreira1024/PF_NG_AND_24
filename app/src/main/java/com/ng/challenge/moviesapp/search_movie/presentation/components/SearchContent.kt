@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import com.ng.challenge.moviesapp.core.domain.model.MovieSearch
+import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.core.presentation.components.common.ErrorScreen
 import com.ng.challenge.moviesapp.core.presentation.components.common.LoadingView
 import com.ng.challenge.moviesapp.movie_popular.presentation.components.MovieItem
@@ -35,7 +35,7 @@ fun SearchContent(
 
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    pagingMovies: LazyPagingItems<MovieSearch>,
+    pagingMovies: LazyPagingItems<Movie>,
     query: String,
     onSearch: (String) -> Unit,
     onEvent: (MovieSearchEvent) -> Unit,
@@ -75,9 +75,7 @@ fun SearchContent(
                     MovieItem(
                         modifier = Modifier
                             .height(190.dp),
-                        voteAvg = it.voteAvg,
-                        imageUrl = it.imageUrl,
-                        id = it.id
+                        movie = it
                     ) { movieId ->
                       onDetail(movieId)
                     }

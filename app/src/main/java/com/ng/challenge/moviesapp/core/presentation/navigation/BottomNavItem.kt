@@ -1,11 +1,9 @@
 package com.ng.challenge.moviesapp.core.presentation.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Details
 import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.ng.challenge.moviesapp.core.util.Constants.MOVIE_DETAIL_ARGUMENT
 
 sealed class BottomNavItem(val title: String, val icon: ImageVector, val route: String) {
     object MoviePopular: BottomNavItem(

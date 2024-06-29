@@ -1,7 +1,6 @@
 package com.ng.challenge.moviesapp
 
 import android.app.Application
-import com.ng.challenge.moviesapp.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

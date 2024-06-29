@@ -1,6 +1,6 @@
 package com.ng.challenge.moviesapp.core.util
 
-sealed class ResultData<out T>() {
+sealed class ResultData<out T> {
 
     object Loading: ResultData<Nothing>()
     data class Success<out T>(val data: T?): ResultData<T>()

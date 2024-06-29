@@ -1,6 +1,5 @@
 package com.ng.challenge.moviesapp.detail_movie.data.source
 
-import androidx.compose.ui.text.resolveDefaults
 import com.ng.challenge.moviesapp.core.data.remote.MovieService
 import com.ng.challenge.moviesapp.core.data.remote.response.MovieResponse
 import com.ng.challenge.moviesapp.core.domain.model.MovieDetails

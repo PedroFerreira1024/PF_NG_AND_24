@@ -1,13 +1,8 @@
 package com.ng.challenge.moviesapp.detail_movie.presentation
 
 import android.annotation.SuppressLint
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.ng.challenge.moviesapp.R
 import com.ng.challenge.moviesapp.core.presentation.components.common.MovieAppBar

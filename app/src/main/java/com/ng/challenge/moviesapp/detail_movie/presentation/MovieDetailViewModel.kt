@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.ng.challenge.moviesapp.core.util.Constants
 import com.ng.challenge.moviesapp.core.util.ResultData
 import com.ng.challenge.moviesapp.core.util.UtilFunctions
-import com.ng.challenge.moviesapp.detail_movie.domain.usecase.GetMovieDetailsUseCase
 import com.ng.challenge.moviesapp.detail_movie.domain.usecase.IGetMovieDetailsUseCase
 import com.ng.challenge.moviesapp.detail_movie.presentation.state.MovieDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel

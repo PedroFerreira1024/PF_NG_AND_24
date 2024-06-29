@@ -8,7 +8,7 @@ import com.ng.challenge.moviesapp.movie_popular.domain.repository.IMoviePopularR
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 import kotlinx.coroutines.flow.Flow
 
-class MoviePopularRepository constructor(
+class MoviePopularRepository (
     private val remoteDataSource: IMoviePopularDataSource
 ): IMoviePopularRepository {
 

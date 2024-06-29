@@ -3,9 +3,9 @@ package com.ng.challenge.moviesapp.core.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.ng.challenge.moviesapp.core.util.Constants
@@ -13,7 +13,6 @@ import com.ng.challenge.moviesapp.detail_movie.presentation.MovieDetailScreen
 import com.ng.challenge.moviesapp.detail_movie.presentation.MovieDetailViewModel
 import com.ng.challenge.moviesapp.movie_popular.presentation.MoviePopularScreen
 import com.ng.challenge.moviesapp.movie_popular.presentation.MoviePopularViewModel
-import com.ng.challenge.moviesapp.movie_popular.presentation.state.MoviePopularState
 import com.ng.challenge.moviesapp.search_movie.presentation.MovieSearchEvent
 import com.ng.challenge.moviesapp.search_movie.presentation.MovieSearchScreen
 import com.ng.challenge.moviesapp.search_movie.presentation.MovieSearchViewModel

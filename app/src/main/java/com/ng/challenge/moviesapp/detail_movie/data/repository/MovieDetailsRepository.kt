@@ -9,7 +9,7 @@ import com.ng.challenge.moviesapp.detail_movie.domain.repository.IMovieDetailsRe
 import com.ng.challenge.moviesapp.detail_movie.domain.source.IMovieDetailDataSource
 import kotlinx.coroutines.flow.Flow
 
-class MovieDetailsRepository constructor(
+class MovieDetailsRepository (
     private val remoteDataSource: IMovieDetailDataSource
 ) : IMovieDetailsRepository {
     override suspend fun getMovieDetails(movieId: Int): MovieDetails {

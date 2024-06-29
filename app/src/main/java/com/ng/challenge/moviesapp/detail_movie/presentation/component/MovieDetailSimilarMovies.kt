@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.ng.challenge.moviesapp.core.domain.model.Movie
@@ -33,9 +32,8 @@ fun MovieDetailSimilarMovies (
                     modifier = modifier
                         .heightIn(max = 150.dp)
                         .widthIn(max=110.dp),
-                    voteAvg = it.voteAvg,
-                    imageUrl = it.imageUrl,
-                    id = it.id,
+                    showExtraData = false,
+                    movie = movie,
                     onClick = {
 
                     })
