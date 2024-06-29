@@ -73,11 +73,29 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    implementation (libs.truth)
+
+    androidTestImplementation (libs.hilt.android.testing)
+    kaptAndroidTest (libs.hilt.android.compiler)
+
+    androidTestImplementation (libs.androidx.core.testing)
+    androidTestImplementation (libs.kotlinx.coroutines.test)
+    androidTestImplementation (libs.truth)
+
+    // Mockito main dependency
+    testImplementation (libs.mockito.core)
+    // Mockito for Android tests
+    androidTestImplementation (libs.mockito.android)
+    // Mockito for mocking classes and methods
+    testImplementation (libs.mockito.inline)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 

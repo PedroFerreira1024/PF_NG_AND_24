@@ -7,7 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,7 +38,7 @@ fun MovieAppBar(
                     ) {
                         Icon(
                             modifier = Modifier,
-                            imageVector = Icons.Filled.ArrowBack,
+                            imageVector = Icons.Filled.ArrowBackIosNew,
                             tint = textColor,
                             contentDescription = ""
                         )
