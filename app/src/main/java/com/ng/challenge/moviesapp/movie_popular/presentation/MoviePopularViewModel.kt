@@ -6,14 +6,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.ng.challenge.moviesapp.movie_popular.domain.usecase.GetPopularMoviesUseCase
+import com.ng.challenge.moviesapp.movie_popular.domain.usecase.IGetPopularMoviesUseCase
 import com.ng.challenge.moviesapp.movie_popular.presentation.state.MoviePopularState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MoviePopularViewModel @Inject constructor(
-    getPopularMoviesUseCase: GetPopularMoviesUseCase
+    getPopularMoviesUseCase: IGetPopularMoviesUseCase
 ): ViewModel() {
 
     var uiState by mutableStateOf(MoviePopularState())
