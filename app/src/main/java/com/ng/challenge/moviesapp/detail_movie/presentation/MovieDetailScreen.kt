@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.ng.challenge.moviesapp.R
+import com.ng.challenge.moviesapp.core.presentation.components.common.MovieAppBar
 import com.ng.challenge.moviesapp.detail_movie.presentation.component.MovieDetailContent
 import com.ng.challenge.moviesapp.detail_movie.presentation.state.MovieDetailState
 
@@ -23,11 +24,8 @@ fun MovieDetailScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = stringResource(id = R.string.movie_detail), color = MaterialTheme.colors.onPrimary)
-                },
-                backgroundColor = MaterialTheme.colors.primary
+            MovieAppBar(
+                title = R.string.movie_detail
             )
         },
         content = {

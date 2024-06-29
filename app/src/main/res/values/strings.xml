@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MoviesApp</string>
     <string name="popular_movies">Popular Movies</string>
+    <string name="search_movies">Search Movies</string>
 
     <string name="average_vote">Average Vote</string>
     <string name="duration">Duration</string>

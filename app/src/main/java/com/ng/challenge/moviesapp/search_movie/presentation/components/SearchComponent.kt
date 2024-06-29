@@ -71,6 +71,7 @@ fun SearchComponent(
             placeholderColor = MaterialTheme.colors.onPrimary,
             trailingIconColor = MaterialTheme.colors.secondary
         ),
+        maxLines = 1,
         modifier = modifier
             .fillMaxWidth()
             .heightIn(min = 60.dp)
