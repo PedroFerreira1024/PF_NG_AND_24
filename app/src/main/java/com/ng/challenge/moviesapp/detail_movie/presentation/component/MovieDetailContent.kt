@@ -58,8 +58,9 @@ fun MovieDetailContent(
                 backdropImageUrl = movieDetails?.backdropPathUrl.toString(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
+                    .height(210.dp)
             )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = movieDetails?.title.toString(),
                 color = MaterialTheme.colors.primary,
@@ -69,7 +70,7 @@ fun MovieDetailContent(
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             FlowRow(
                 mainAxisSpacing = 10.dp,
                 mainAxisAlignment = MainAxisAlignment.Center,
@@ -82,7 +83,7 @@ fun MovieDetailContent(
                     MovieDetailGenreTag(genre = genre)
                 }
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             MovieInfoContent(
                 movieDetails = movieDetails,
                 modifier = Modifier.fillMaxWidth()
@@ -104,7 +105,7 @@ fun MovieDetailContent(
                 text = stringResource(id = R.string.similar),
                 color = MaterialTheme.colors.primary,
                 fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.ExtraBold,
+                fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier

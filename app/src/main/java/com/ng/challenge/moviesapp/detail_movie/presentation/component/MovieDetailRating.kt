@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.GenericShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,7 +48,7 @@ fun MovieDetailRating (
 private fun RatingStar(
     rating: Float,
     ratingColor: Color = Color.Yellow,
-    backgroundColor: Color = Color.Gray
+    backgroundColor: Color = MaterialTheme.colors.onPrimary
 ) {
     BoxWithConstraints(
         modifier = Modifier

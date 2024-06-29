@@ -20,14 +20,14 @@ fun MovieDetailGenreTag(
         modifier = Modifier
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colors.onPrimary,
+                color = MaterialTheme.colors.primary,
                 shape = RoundedCornerShape(100.dp)
             )
             .padding(10.dp)
     ) {
         Text(
             text = genre,
-            color = MaterialTheme.colors.onPrimary,
+            color = MaterialTheme.colors.primary,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.body2
         )

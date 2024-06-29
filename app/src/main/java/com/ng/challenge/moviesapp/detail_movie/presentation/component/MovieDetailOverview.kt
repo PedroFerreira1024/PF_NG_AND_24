@@ -37,7 +37,7 @@ fun MovieDetailOverview (
             text = stringResource(id = R.string.overview),
             color = MaterialTheme.colors.primary,
             fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.ExtraBold,
+            fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
         if (expanded) {
@@ -47,7 +47,7 @@ fun MovieDetailOverview (
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 20.sp,
                 modifier =  Modifier.clickable {
-                    expanded != expanded
+                    expanded = !expanded
                 }
             )
         } else {
@@ -56,10 +56,10 @@ fun MovieDetailOverview (
                 color = MaterialTheme.colors.primary,
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 20.sp,
-                maxLines = 2,
+                maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
                 modifier =  Modifier.clickable {
-                    expanded != expanded
+                    expanded = !expanded
                 }
             )
         }

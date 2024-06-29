@@ -1,11 +1,13 @@
 package com.ng.challenge.moviesapp.detail_movie.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.ng.challenge.moviesapp.core.domain.model.Movie
@@ -27,6 +29,7 @@ fun MovieDetailSimilarMovies (
             val movie = pagingMoviesSimilar[index]
             movie?.let {
                 MovieItem(
+                    modifier = modifier.heightIn(max = 150.dp),
                     voteAvg = it.voteAvg,
                     imageUrl = it.imageUrl,
                     id = it.id,

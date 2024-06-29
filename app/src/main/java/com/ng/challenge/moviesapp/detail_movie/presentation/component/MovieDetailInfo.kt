@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ng.challenge.moviesapp.R
 import com.ng.challenge.moviesapp.core.domain.model.MovieDetails
+import com.ng.challenge.moviesapp.movie_popular.presentation.toRoundedDecimals
 
 @Composable
 fun MovieInfoContent(
@@ -22,7 +23,7 @@ fun MovieInfoContent(
     modifier: Modifier
 ) {
     Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
+        horizontalArrangement = Arrangement.SpaceAround ,
         modifier = modifier
     ) {
         MovieDetailInfo(
@@ -34,7 +35,7 @@ fun MovieInfoContent(
         )
         MovieDetailInfo(
             name = stringResource(id = R.string.average_vote),
-            value = movieDetails?.voteAvg.toString()
+            value = movieDetails?.voteAvg.toRoundedDecimals()
         )
         MovieDetailInfo(
             name = stringResource(id = R.string.release_date),
@@ -51,13 +52,13 @@ fun MovieDetailInfo(
         Text(
             text = name,
             style = MaterialTheme.typography.subtitle2.copy(fontSize = 13.sp, letterSpacing = 1.sp),
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primaryVariant,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Text(
             text = value,
             style = MaterialTheme.typography.subtitle1.copy(fontSize = 13.sp, letterSpacing = 1.sp),
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colors.primaryVariant,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 4.dp)
