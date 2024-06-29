@@ -22,6 +22,7 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.ng.challenge.moviesapp.R
+import com.ng.challenge.moviesapp.core.presentation.components.common.AsyncImageUrl
 
 @Composable
 fun MovieItem (
@@ -54,21 +55,14 @@ fun MovieItem (
             elevation = 8.dp
         ) {
             Box {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(imageUrl)
-                        .crossfade(true)
-                        .error(R.drawable.image_error)
-                        .placeholder(R.drawable.image_placeholder)
-                        .build(),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop,
+                AsyncImageUrl(
+                    imageUrl = imageUrl,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
                         .background(Color.Black)
                         .clip(RoundedCornerShape(8.dp))
-                    )
+                )
             }
         }
     }
