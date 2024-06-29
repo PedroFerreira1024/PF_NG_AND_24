@@ -8,10 +8,8 @@ import com.ng.challenge.moviesapp.search_movie.domain.usecase.IGetMovieSearchUse
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
