@@ -2,7 +2,6 @@ package com.ng.challenge.moviesapp.core.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 
@@ -30,8 +29,6 @@ class MoviePagingSource (
                 nextKey = if (pageNumber == totalPages) null else pageNumber + 1
             )
         } catch (exception: Exception) {
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
     }

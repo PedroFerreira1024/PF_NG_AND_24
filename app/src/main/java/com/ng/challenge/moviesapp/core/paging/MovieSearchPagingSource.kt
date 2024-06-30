@@ -2,9 +2,7 @@ package com.ng.challenge.moviesapp.core.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
-import com.ng.challenge.moviesapp.search_movie.data.mapper.toMovieSearch
 import com.ng.challenge.moviesapp.search_movie.domain.source.IMovieSearchDataSource
 
 class MovieSearchPagingSource(
@@ -32,8 +30,6 @@ class MovieSearchPagingSource(
             )
 
         } catch (exception: Exception) {
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
     }

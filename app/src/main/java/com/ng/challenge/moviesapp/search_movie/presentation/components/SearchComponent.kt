@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ng.challenge.moviesapp.search_movie.presentation.MovieSearchEvent
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchComponent(
     modifier: Modifier = Modifier,

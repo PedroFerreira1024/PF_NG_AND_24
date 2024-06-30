@@ -1,7 +1,6 @@
 package com.ng.challenge.moviesapp.movie_popular.data.source
 
 import com.ng.challenge.moviesapp.core.data.remote.MovieService
-import com.ng.challenge.moviesapp.core.data.remote.response.MovieResponse
 import com.ng.challenge.moviesapp.core.domain.model.MoviePaging
 import com.ng.challenge.moviesapp.core.paging.MoviePagingSource
 import com.ng.challenge.moviesapp.movie_popular.data.mapper.toMovie

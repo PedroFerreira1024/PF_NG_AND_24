@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.ng.challenge.moviesapp.search_movie.domain.usecase.GetMovieSearchUseCase
 import com.ng.challenge.moviesapp.search_movie.domain.usecase.IGetMovieSearchUseCase
 import com.ng.challenge.moviesapp.search_movie.presentation.state.MovieSearchState
 import dagger.hilt.android.lifecycle.HiltViewModel

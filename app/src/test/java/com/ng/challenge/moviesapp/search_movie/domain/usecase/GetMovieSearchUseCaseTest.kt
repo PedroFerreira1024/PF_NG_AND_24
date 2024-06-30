@@ -1,16 +1,14 @@
 package com.ng.challenge.moviesapp.search_movie.domain.usecase
 
 import androidx.paging.PagingConfig
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.google.common.truth.Truth.assertThat
 import com.ng.challenge.moviesapp.TestDispatcherRule
 import com.ng.challenge.moviesapp.core.model.MovieFactory
 import com.ng.challenge.moviesapp.core.model.PagingSourceMoviesFactory
-import com.ng.challenge.moviesapp.search_movie.data.repository.MovieSearchRepository
 import com.ng.challenge.moviesapp.search_movie.domain.repository.IMovieSearchRepository
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule

@@ -1,7 +1,6 @@
 package com.ng.challenge.moviesapp.search_movie.data.source
 
 import com.ng.challenge.moviesapp.core.data.remote.MovieService
-import com.ng.challenge.moviesapp.core.data.remote.response.SearchResponse
 import com.ng.challenge.moviesapp.core.domain.model.MoviePaging
 import com.ng.challenge.moviesapp.core.paging.MovieSearchPagingSource
 import com.ng.challenge.moviesapp.search_movie.data.mapper.toMovie

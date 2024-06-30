@@ -59,14 +59,14 @@ fun MovieDetailContent(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MovieDetailBackdropImage(
-                    backdropImageUrl = movieDetails?.backdropPathUrl.toString(),
+                    backdropImageUrl = movieDetails.backdropPathUrl.toString(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(210.dp)
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = movieDetails?.title.toString(),
+                    text = movieDetails.title.toString(),
                     color = MaterialTheme.colors.primary,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.ExtraBold,
@@ -83,7 +83,7 @@ fun MovieDetailContent(
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
                 ) {
-                    movieDetails?.genres?.forEach { genre ->
+                    movieDetails.genres.forEach { genre ->
                         MovieDetailGenreTag(genre = genre)
                     }
                 }
@@ -94,12 +94,12 @@ fun MovieDetailContent(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 MovieDetailRating(
-                    rating = (movieDetails?.voteAvg?.toFloat()?.div(2f) ?: 0f),
+                    rating = (movieDetails.voteAvg.toFloat().div(2f) ?: 0f),
                     modifier = Modifier.height(15.dp)
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 MovieDetailOverview(
-                    overview = movieDetails?.overview.toString(),
+                    overview = movieDetails.overview.toString(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
