@@ -6,7 +6,6 @@ import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.search_movie.data.mapper.toMovieSearch
 import com.ng.challenge.moviesapp.search_movie.domain.source.IMovieSearchDataSource
-import java.io.IOException
 
 class MovieSearchPagingSource(
     private val query: String,
@@ -24,11 +23,12 @@ class MovieSearchPagingSource(
             val pageNumber = params.key ?: 1
             val response = remoteDataSource.getSearchMovies(page = pageNumber, query = query)
 
-            val movies = response.results
+            val movies = response.movies
+            val totalPages = response.totalPages
             LoadResult.Page(
-                data = movies.toMovieSearch(),
+                data = movies,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                nextKey = if (movies.isEmpty()) null else pageNumber + 1
+                nextKey = if (pageNumber == totalPages) null else pageNumber + 1
             )
 
         } catch (exception: Exception) {

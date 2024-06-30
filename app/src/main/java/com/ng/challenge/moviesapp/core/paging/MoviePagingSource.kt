@@ -5,7 +5,6 @@ import androidx.paging.PagingState
 import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
-import java.io.IOException
 
 class MoviePagingSource (
     private val remoteDataSource: IMoviePopularDataSource
