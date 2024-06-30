@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingConfig
 import com.ng.challenge.moviesapp.core.util.Constants
 import com.ng.challenge.moviesapp.core.util.ResultData
 import com.ng.challenge.moviesapp.core.util.UtilFunctions
@@ -27,8 +28,8 @@ class MovieDetailViewModel @Inject constructor(
 
     private val movieId = savedStateHandle.get<Int>(key = Constants.MOVIE_DETAIL_ARGUMENT)
 
-    init{
-        movieId?.let {safeMovieId ->
+    init {
+        movieId?.let { safeMovieId ->
             getMovieDetail(MovieDetailEvent.GetMovieDetail(safeMovieId))
         }
     }
@@ -41,36 +42,42 @@ class MovieDetailViewModel @Inject constructor(
         when (event) {
             is MovieDetailEvent.GetMovieDetail ->
                 viewModelScope.launch {
-                    getMovieDetailsUseCase.invoke(
+                    val resultData = getMovieDetailsUseCase.invoke(
                         params = IGetMovieDetailsUseCase.Params(
-                            movieId = event.movieId
+                            movieId = event.movieId,
+                            pagingConfig = pagingConfig()
                         )
-                    ).collect { resultData ->
-                        when (resultData) {
-                            is ResultData.Success -> {
-                                uiState = uiState.copy(
-                                    isLoading = false,
-                                    movieDetails = resultData.data?.second,
-                                    results = resultData.data?.first ?: emptyFlow()
-                                )
-                            }
-
-                            is ResultData.Failure -> {
-                                UtilFunctions.logError(
-                                    "Movie Detail ERROR",
-                                    resultData.e.message.toString()
-                                )
-                            }
-
-                            is ResultData.Loading -> {
-                                uiState = uiState.copy(
-                                    isLoading = true
-                                )
-                            }
+                    )
+                    when (resultData) {
+                        is ResultData.Success -> {
+                            uiState = uiState.copy(
+                                isLoading = false,
+                                movieDetails = resultData.data?.second,
+                                results = resultData.data?.first ?: emptyFlow()
+                            )
                         }
 
+                        is ResultData.Failure -> {
+                            UtilFunctions.logError(
+                                "Movie Detail ERROR",
+                                resultData.e.message.toString()
+                            )
+                        }
+
+                        is ResultData.Loading -> {
+                            uiState = uiState.copy(
+                                isLoading = true
+                            )
+                        }
                     }
                 }
         }
     }
+}
+
+private fun pagingConfig(): PagingConfig {
+    return PagingConfig(
+        pageSize = 20,
+        initialLoadSize = 20
+    )
 }

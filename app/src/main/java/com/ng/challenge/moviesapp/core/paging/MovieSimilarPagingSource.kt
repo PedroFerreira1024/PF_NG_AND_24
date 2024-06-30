@@ -2,13 +2,9 @@ package com.ng.challenge.moviesapp.core.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
 import com.ng.challenge.moviesapp.detail_movie.domain.source.IMovieDetailDataSource
-import com.ng.challenge.moviesapp.movie_popular.data.mapper.toMovie
 
-
-import java.io.IOException
 
 class MovieSimilarPagingSource (
     private val remoteDataSource: IMovieDetailDataSource,
@@ -38,8 +34,6 @@ class MovieSimilarPagingSource (
             )
 
         } catch (exception: Exception) {
-            return LoadResult.Error(exception)
-        } catch (exception: HttpException) {
             return LoadResult.Error(exception)
         }
     }

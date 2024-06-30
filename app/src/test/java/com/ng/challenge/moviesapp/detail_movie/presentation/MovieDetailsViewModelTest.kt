@@ -58,7 +58,7 @@ class MovieDetailsViewModelTest {
 
         //Given
         whenever(getMovieDetailsUseCase.invoke(any()))
-            .thenReturn(flowOf(ResultData.Success(flowOf(pagingData) to movieDetailsFactory)))
+            .thenReturn(ResultData.Success(flowOf(pagingData) to movieDetailsFactory))
 
         val argumentCaptor = argumentCaptor<IGetMovieDetailsUseCase.Params>()
 
@@ -81,7 +81,7 @@ class MovieDetailsViewModelTest {
         //Given
         val exception = Exception("Oops some must have happened")
         whenever(getMovieDetailsUseCase.invoke(any()))
-            .thenReturn(flowOf(ResultData.Failure(exception)))
+            .thenReturn(ResultData.Failure(exception))
         //When
         viewModel.uiState.isLoading
 
