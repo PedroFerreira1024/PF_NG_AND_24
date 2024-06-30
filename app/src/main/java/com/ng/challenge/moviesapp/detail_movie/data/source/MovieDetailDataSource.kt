@@ -1,11 +1,12 @@
 package com.ng.challenge.moviesapp.detail_movie.data.source
 
 import com.ng.challenge.moviesapp.core.data.remote.MovieService
-import com.ng.challenge.moviesapp.core.data.remote.response.MovieResponse
 import com.ng.challenge.moviesapp.core.domain.model.MovieDetails
+import com.ng.challenge.moviesapp.core.domain.model.MoviePaging
 import com.ng.challenge.moviesapp.core.paging.MovieSimilarPagingSource
 import com.ng.challenge.moviesapp.core.util.toBackdropUrl
 import com.ng.challenge.moviesapp.detail_movie.domain.source.IMovieDetailDataSource
+import com.ng.challenge.moviesapp.movie_popular.data.mapper.toMovie
 import javax.inject.Inject
 
 class MovieDetailDataSource @Inject constructor(
@@ -27,8 +28,14 @@ class MovieDetailDataSource @Inject constructor(
         )
     }
 
-    override suspend fun getMovieSimilar(page: Int, movieId: Int): MovieResponse {
-        return service.getMoviesSimilar(page = page, movieId = movieId)
+    override suspend fun getMovieSimilar(page: Int, movieId: Int): MoviePaging {
+        val response = service.getMoviesSimilar(page = page, movieId = movieId)
+        return MoviePaging (
+            page = response.page,
+            totalPages = response.totalPages,
+            totalResults = response.totalResults,
+            movies = response.results.map { it.toMovie() }
+        )
     }
 
     override fun getSimilarMoviesPagingSource(movieId: Int): MovieSimilarPagingSource {
