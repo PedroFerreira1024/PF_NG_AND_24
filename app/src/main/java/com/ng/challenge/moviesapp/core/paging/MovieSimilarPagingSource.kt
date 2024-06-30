@@ -36,11 +36,9 @@ class MovieSimilarPagingSource (
                 nextKey = if (movies.isEmpty()) null else pageNumber + 1
             )
 
-        } catch (exception: IOException) {
-            exception.printStackTrace()
+        } catch (exception: Exception) {
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
-            exception.printStackTrace()
             return LoadResult.Error(exception)
         }
     }

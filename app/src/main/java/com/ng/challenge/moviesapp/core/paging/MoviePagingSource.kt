@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import coil.network.HttpException
 import com.ng.challenge.moviesapp.core.domain.model.Movie
-import com.ng.challenge.moviesapp.movie_popular.data.mapper.toMovie
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 import java.io.IOException
 
@@ -22,19 +21,18 @@ class MoviePagingSource (
         return try {
 
             val pageNumber = params.key ?: 1
-            val response = remoteDataSource.getPopularMovies(page = pageNumber)
-            val movies = response.results
+            val moviePaging = remoteDataSource.getPopularMovies(page = pageNumber)
+            val movies = moviePaging.movies
+            val totalPages = moviePaging.totalPages
 
             LoadResult.Page(
-                data = movies.toMovie(),
+                data = movies,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                nextKey = if (movies.isEmpty()) null else pageNumber + 1
+                nextKey = if (pageNumber == totalPages) null else pageNumber + 1
             )
-        } catch (exception: IOException) {
-            exception.printStackTrace()
+        } catch (exception: Exception) {
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
-            exception.printStackTrace()
             return LoadResult.Error(exception)
         }
     }

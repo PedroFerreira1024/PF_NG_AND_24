@@ -15,3 +15,13 @@ fun List<MovieResult>.toMovie(quality: String = IMAGE_QUALITY_LOW) = map { movie
         imageUrl = movieResult.posterPath?.toPostUrl(quality) ?: ""
     )
 }
+
+fun MovieResult.toMovie(): Movie {
+    return Movie(
+        id = id,
+        title = title,
+        releaseDate = releaseDate,
+        voteAvg = voteAverage,
+        imageUrl = posterPath?.toPostUrl() ?: ""
+    )
+}
