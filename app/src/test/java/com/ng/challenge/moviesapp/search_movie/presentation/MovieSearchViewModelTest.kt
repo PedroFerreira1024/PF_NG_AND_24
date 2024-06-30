@@ -3,7 +3,7 @@ package com.ng.challenge.moviesapp.search_movie.presentation
 import androidx.paging.PagingData
 import com.google.common.truth.Truth.assertThat
 import com.ng.challenge.moviesapp.TestDispatcherRule
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MovieFactory
+import com.ng.challenge.moviesapp.core.model.MovieFactory
 import com.ng.challenge.moviesapp.search_movie.domain.usecase.IGetMovieSearchUseCase
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever

@@ -4,8 +4,9 @@ package com.ng.challenge.moviesapp.movie_popular.presentation
 import androidx.paging.PagingData
 import com.google.common.truth.Truth.assertThat
 import com.ng.challenge.moviesapp.TestDispatcherRule
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MovieFactory
+import com.ng.challenge.moviesapp.core.model.MovieFactory
 import com.ng.challenge.moviesapp.movie_popular.domain.usecase.IGetPopularMoviesUseCase
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -41,7 +42,7 @@ class MoviePopularViewModelTest {
     fun must_validate_paging_data_object_values_when_calling_paging_data_from_movies() = runTest {
 
         //Given
-        whenever(getPopularMoviesUseCase.invoke()).thenReturn(
+        whenever(getPopularMoviesUseCase.invoke(any())).thenReturn(
             flowOf(fakePagingDataMovies)
         )
 
@@ -56,7 +57,7 @@ class MoviePopularViewModelTest {
     fun must_throw_an_exception_when_the_calling_to_the_use_case_returns_an_exception () = runTest {
 
         //Given
-        whenever(getPopularMoviesUseCase.invoke())
+        whenever(getPopularMoviesUseCase.invoke(any()))
             .thenThrow(RuntimeException())
 
         //When

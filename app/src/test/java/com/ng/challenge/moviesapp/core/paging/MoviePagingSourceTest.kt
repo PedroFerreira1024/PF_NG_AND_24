@@ -4,8 +4,8 @@ import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
 import com.ng.challenge.moviesapp.TestDispatcherRule
 import com.ng.challenge.moviesapp.core.domain.model.Movie
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MovieFactory
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MoviePagingFactory
+import com.ng.challenge.moviesapp.core.model.MovieFactory
+import com.ng.challenge.moviesapp.core.model.MoviePagingFactory
 import com.ng.challenge.moviesapp.movie_popular.domain.source.IMoviePopularDataSource
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever

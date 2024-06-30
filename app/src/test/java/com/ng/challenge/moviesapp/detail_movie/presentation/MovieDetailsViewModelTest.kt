@@ -6,8 +6,8 @@ import com.google.common.truth.Truth.assertThat
 import com.ng.challenge.moviesapp.TestDispatcherRule
 import com.ng.challenge.moviesapp.core.util.ResultData
 import com.ng.challenge.moviesapp.detail_movie.domain.usecase.IGetMovieDetailsUseCase
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MovieDetailsFactory
-import com.ng.challenge.moviesapp.movie_popular.core.domain.model.MovieFactory
+import com.ng.challenge.moviesapp.core.model.MovieDetailsFactory
+import com.ng.challenge.moviesapp.core.model.MovieFactory
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.verify
