@@ -34,7 +34,7 @@ class GetMovieDetailsUseCase @Inject constructor (
                     )
                 )
                 emit(ResultData.Success(moviesSimilar to movieDetails))
-            } catch (exception: IOException) {
+            } catch (exception: Exception) {
                 emit(ResultData.Failure(exception))
             } catch (exception: HttpException) {
                 emit(ResultData.Failure(exception))

@@ -43,99 +43,103 @@ fun MovieDetailContent(
     isError: String,
     navigateToDetailMovie: (Int) -> Unit
 ) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+    if (movieDetails == null) {
+        MovieDetailEmpty()
+    } else {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background)
         ) {
-            MovieDetailBackdropImage(
-                backdropImageUrl = movieDetails?.backdropPathUrl.toString(),
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(210.dp)
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = movieDetails?.title.toString(),
-                color = MaterialTheme.colors.primary,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            FlowRow(
-                mainAxisSpacing = 10.dp,
-                mainAxisAlignment = MainAxisAlignment.Center,
-                crossAxisSpacing = 10.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
+                    .fillMaxHeight()
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                movieDetails?.genres?.forEach{ genre ->
-                    MovieDetailGenreTag(genre = genre)
-                }
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-            MovieInfoContent(
-                movieDetails = movieDetails,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            MovieDetailRating(
-                rating = (movieDetails?.voteAvg?.toFloat()?.div(2f) ?: 0f),
-                modifier = Modifier.height(15.dp)
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            MovieDetailOverview(
-                overview = movieDetails?.overview.toString(),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = stringResource(id = R.string.similar),
-                color = MaterialTheme.colors.primary,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .align(alignment = Alignment.Start)
-                    .padding(horizontal = 8.dp)
-            )
-            MovieDetailSimilarMovies(
-                pagingMoviesSimilar = pagingMoviesSimilar,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                navigateToDetailMovie = navigateToDetailMovie
-            )
-        }
-        if (isError.isNotEmpty()) {
-            Text(
-                text = isError,
-                color = MaterialTheme.colors.error,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-                    .align(Alignment.TopCenter)
+                MovieDetailBackdropImage(
+                    backdropImageUrl = movieDetails?.backdropPathUrl.toString(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(210.dp)
                 )
-        }
-        if (isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.TopCenter),
-                color = MaterialTheme.colors.primary
-            )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = movieDetails?.title.toString(),
+                    color = MaterialTheme.colors.primary,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 24.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                FlowRow(
+                    mainAxisSpacing = 10.dp,
+                    mainAxisAlignment = MainAxisAlignment.Center,
+                    crossAxisSpacing = 10.dp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                ) {
+                    movieDetails?.genres?.forEach { genre ->
+                        MovieDetailGenreTag(genre = genre)
+                    }
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                MovieInfoContent(
+                    movieDetails = movieDetails,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                MovieDetailRating(
+                    rating = (movieDetails?.voteAvg?.toFloat()?.div(2f) ?: 0f),
+                    modifier = Modifier.height(15.dp)
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                MovieDetailOverview(
+                    overview = movieDetails?.overview.toString(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = stringResource(id = R.string.similar),
+                    color = MaterialTheme.colors.primary,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(alignment = Alignment.Start)
+                        .padding(horizontal = 8.dp)
+                )
+                MovieDetailSimilarMovies(
+                    pagingMoviesSimilar = pagingMoviesSimilar,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    navigateToDetailMovie = navigateToDetailMovie
+                )
+            }
+            if (isError.isNotEmpty()) {
+                Text(
+                    text = isError,
+                    color = MaterialTheme.colors.error,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                        .align(Alignment.TopCenter)
+                )
+            }
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.TopCenter),
+                    color = MaterialTheme.colors.primary
+                )
+            }
         }
     }
 }
@@ -153,7 +157,6 @@ fun MovieDetailsContentPreview() {
             releaseDate = "25/05/2022",
             voteAvg = 2.7
         ),
-// criar um fluxo (flow) a partir de um ou mais elementos.
         pagingMoviesSimilar = flowOf<PagingData<Movie>>(PagingData.from(emptyList())).collectAsLazyPagingItems(),
         isError = "Error",
         isLoading = false,
