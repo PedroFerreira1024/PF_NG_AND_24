@@ -7,6 +7,7 @@ import com.ng.challenge.moviesapp.TestDispatcherRule
 import com.ng.challenge.moviesapp.core.model.MovieFactory
 import com.ng.challenge.moviesapp.core.model.PagingSourceMoviesFactory
 import com.ng.challenge.moviesapp.search_movie.data.repository.MovieSearchRepository
+import com.ng.challenge.moviesapp.search_movie.domain.repository.IMovieSearchRepository
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.flow.first
@@ -26,7 +27,7 @@ class GetMovieSearchUseCaseTest {
     val dispatcherRule = TestDispatcherRule()
 
     @Mock
-    lateinit var movieSearchRepository: MovieSearchRepository
+    lateinit var movieSearchRepository: IMovieSearchRepository
 
     private val movieSearchFactory = MovieFactory()
         .create(poster = MovieFactory.Poster.Avengers)
@@ -55,7 +56,7 @@ class GetMovieSearchUseCaseTest {
                     initialLoadSize = 20
                 )
             )
-        ).first()
+        )
 
         verify(movieSearchRepository).getSearchedMovies(query = "")
         assertThat(result).isNotNull()
